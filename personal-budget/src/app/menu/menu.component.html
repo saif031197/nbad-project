@@ -1,0 +1,22 @@
+<!--Semantice HTML added role-->
+<!--A11y landmark nav-->
+<nav class="menu" role="navigation">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button (click)="logout()" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  <ul>
+    <li>
+      <p>Welcome {{user.username}}!</p>
+    </li>
+    <li>
+      <p>{{user.email}}</p>
+    </li>
+  </ul>
+</nav>
+<pb-dashboard [user]="user"></pb-dashboard>

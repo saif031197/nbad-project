@@ -1,0 +1,69 @@
+<div>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="budget_id">
+      <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index">
+        {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Expense Column -->
+    <ng-container matColumnDef="expense">
+      <mat-header-cell *matHeaderCellDef> Expense </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.expense}} </mat-cell>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+    </ng-container>
+
+    <!-- Budget Date Column -->
+    <ng-container matColumnDef="budget_date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.budget_date | date: 'MM/dd/yyyy'}} </mat-cell>
+    </ng-container>
+
+    <!--actions--> <!--A11y by adding aria-label to buttons-->>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent"
+          (click)="startEdit(i, row.budget_id, row.title, row.expense, row.category, row.budget_date)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent"
+          (click)="deleteItem(i, row.budget_id, row.title, row.expense, row.category, row.budget_date)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator fxFlex="100" #paginatorRef [length]="3" [pageSize]="3" [pageSizeOptions]="[3]">
+  </mat-paginator>
+
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize="5px">
+
+    <mat-grid-tile><canvas id="myChart"></canvas></mat-grid-tile>
+
+    <mat-grid-tile><canvas id="myBarChart"></canvas></mat-grid-tile>
+    <mat-grid-tile><canvas id="myLineChart"></canvas></mat-grid-tile>
+  </mat-grid-list>
+
+</div>

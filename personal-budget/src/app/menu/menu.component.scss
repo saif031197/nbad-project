@@ -1,0 +1,43 @@
+nav.menu {
+  width: 100%;
+  background-color: hsla(236, 100%, 75%, 0.3);
+  height: 44px;
+  padding: 0 40px;
+}
+
+nav.menu ul,
+nav.menu ul li {
+  margin: 0;
+  padding: 0 ;
+  list-style: none;
+  display: inline-block;
+  align-items: center;
+}
+
+nav.menu ul li a {
+  display: block;
+  padding: 0 20px;
+  line-height: 44px;
+  font-size: 1.4em;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  margin: 0;
+
+}
+
+nav.menu ul li p {
+  display: block;
+  padding: 0 20px;
+  line-height: 44px;
+  font-size: 1.4em;
+  text-decoration: none;
+  box-align: center;
+  color: rgb(0, 0, 0);
+  margin: 0;
+}
+
+nav.menu ul li a:hover  {
+  background-color: white;
+  color: #4d5791;
+}
+
